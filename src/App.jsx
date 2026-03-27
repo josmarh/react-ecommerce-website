@@ -6,6 +6,7 @@ import ProductDetail from './pages/ProductDetail'
 import Navbar from './components/Navbar'
 import AuthProvider from './context/AuthContext'
 import CartProvider from './context/CartContext'
+import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 
 function App() {
@@ -17,7 +18,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/checkout" element={<Checkout />} />
+            </Route>
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
